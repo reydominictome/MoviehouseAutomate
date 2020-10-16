@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+  <head>
+    {% load static %}
+    <title>Movie House</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap-4.5.2-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/all.css" rel="stylesheet">
+</head>
+
+    <body>
+      
+      <div>
+        <form class="login">
+          <h1>Login</h1> 
+          <div class="textbox">
+            <input class="p-2" type="text" placeholder="Username" id="username" required>
+          </div>
+          <div class="textbox mb-3">
+            <input class="p-2" type="password" placeholder="Password" id="password" required>
+          </div>
+          <button type="submit" class="btn btn-light" id="signin">Sign in</button>
+        </form>
+      </div>
+
+      <div style="width:300px; height:300px; float:right; margin-right:100px;">
+        <nav  class="navbar navbar-expand-lg navbar-center">
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-center">
+              <li><button class="modal-button btn-success btn-lg" href="#myModal1">About Us</button></li>
+              <li><button class="modal-button btn-danger btn-lg" href="#myModal2">Contact Us</button></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <!-- The Modal -->
+      <div id="myModal1" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>ABOUT US</h2>
+            <span class="close">&times;</span>
+          </div>
+          <div class="modal-body">
+            <p>NitPlex is a Moviehouse made to provide customers with the best experience when watching movies</p>
+            <p>We have movies with a wide genre such as adventure, fantasy, action, and comedy.</p>
+            <img src = "{% static 'images/movie_image.jpg' %}" height="300px" width="600px">
+            <p>Enjoy!</p>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- The Modal -->
+      <div id="myModal2" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>CONTACT US</h2>
+            <span class="close">&times;</span>
+          </div>
+          <div class="modal-body">
+            <p>E-mail us if you have any inquiries regarding our business</p>
+            <table class="a">
+              <tr>
+                <td>Name:</td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="Name" placeholder="Name" required="required">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>EMail:</td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="email" placeholder="Email Address" required="required">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Subject:</td>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="subject" placeholder="Subject" required="required">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Message:</td>
+                <td>
+                  <div class="form-group">
+                    <div class="message_box">
+                      <textarea class="message"></textarea>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="modal-footer">
+              <button style="float:left; margin-right:50%;" class="btn btn-success btn-sm">Send Email</a>
+          </div>
+        </div>
+
+      </div>
+        
+
+      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+      <script type="text/javascript">
+        $(document).ready(function () {
+          var username = $('#username');
+          var password = $('#password');
+          $('.login').submit(function (e) {
+            e.preventDefault();
+            if (username.val() === 'admin' && password.val() === 'admin') {
+              window.location.href = 'dashboard.html';
+            } else {
+              alert('Incorrect username/password.');
+            }
+          });
+        });
+      </script>
+      <!-- MODAL SCRIPT -->
+      <script>
+        // Get the button that opens the modal
+        var btn = document.querySelectorAll("button.modal-button");
+
+        // All page modals
+        var modals = document.querySelectorAll('.modal');
+
+        // Get the <span> element that closes the modal
+        var spans = document.getElementsByClassName("close");
+
+        // When the user clicks the button, open the modal
+        for (var i = 0; i < btn.length; i++) {
+        btn[i].onclick = function(e) {
+            e.preventDefault();
+            modal = document.querySelector(e.target.getAttribute("href"));
+            modal.style.display = "block";
+          }
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        for (var i = 0; i < spans.length; i++) {
+        spans[i].onclick = function() {
+            for (var index in modals) {
+              if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";    
+            }
+          }
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+            for (var index in modals) {
+              if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";    
+            }
+          }
+        }
+      </script>
+      <script type="text/javascript">
+        $(document).ready(function () {
+          var username = $('#username');
+          var password = $('#password');
+          $('.login').submit(function (e) {
+            e.preventDefault();
+            if (username.val() === 'admin' && password.val() === 'admin') {
+              window.location.href = '/movie/index';
+            } else {
+              alert('Incorrect username/password.');
+            }
+          });
+        });
+      </script>
+
+    </body>
+</html>

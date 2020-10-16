@@ -1,0 +1,138 @@
+body{
+  /*font-family: Comic sans MS;*/
+  background: url("/static/images/Movie.jpg");
+  background-size: cover;
+}
+.login{
+	font-size: 20px;
+	text-align: center;
+	width: 300px;
+	position: absolute;
+	top: 50%;
+	left: 20%;
+	transform: translate(-30%,-60%);
+	color: white;
+}
+.textbox{
+	width: 100%;
+	overflow: hidden;
+	font-size: 20px;
+	padding: 5px 0;
+	/*border: 2px solid;*/
+}
+.text
+
+
+box input{
+	border: none;
+	outline: none;
+	background: none;
+	color: white;
+	font-size: 18px;
+	width: 80%;
+	float: left;
+	margin: 0 10px;
+}
+
+.form-control {
+	height: 30px;
+	width: 100%;
+	box-shadow: none;
+	color: #969fa4;
+}
+.form-control:focus {
+	border-color: #5cb85c;
+}
+.form-control, .btn {        
+	border-radius: 3px;
+}
+
+table.a{
+	table-layout: auto;
+	width:75%;
+}
+
+textarea.message{
+	width:100%;
+	height:100%;
+}
+
+div.message_box{
+	width:100%;
+	height:150px;
+	overflow-y: scroll;
+	background: white;
+	color: black;
+}
+
+/* Modal Content */
+
+.modal{
+	overflow:hidden;
+}
+
+.modal-content {
+	position: relative;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 0;
+	border: 1px solid #888;
+	width: 70%;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	-webkit-animation-name: animatetop;
+	-webkit-animation-duration: 0.4s;
+	animation-name: animatetop;
+	animation-duration: 0.4s
+  }
+  
+  /* Add Animation */
+  @-webkit-keyframes animatetop {
+	from {top:-300px; opacity:0} 
+	to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+	from {top:-300px; opacity:0}
+	to {top:0; opacity:1}
+  }
+  
+  /* The Close Button */
+  .close {
+	color: white;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+  }
+  
+  .modal-header {
+	padding: 2px 2px;
+	background-color: #2b312b;
+	color: white;
+	float: left;
+  }
+
+  .modal-dialog{
+    overflow-y: initial !important
+}	
+  
+  .modal-body {
+	padding: 2px 2px;
+	max-height: calc(100vh - 200px);
+    overflow-y: hidden;
+}
+  
+  .modal-footer {
+	padding: 2px 16px;
+	background-color: #2b312b;
+	color: white;
+  }
+
+/* MODAL ENDS HERE */
+

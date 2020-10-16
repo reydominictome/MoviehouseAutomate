@@ -1,0 +1,152 @@
+.body-color{
+	background: url("/static/images/bg.png");
+	background-repeat: repeat;
+  	background-attachment: fixed;
+}
+
+.box-image{
+	height: 300px;
+	width: 700px;
+}
+
+.registration-body-left{
+	float: left;
+	font-family: 'Roboto', sans-serif;
+	height: 300px;
+	width: 700px;
+}
+.form-control {
+	height: 30px;
+	width: 100%;
+	box-shadow: none;
+	color: #969fa4;
+}
+.form-control:focus {
+	border-color: #5cb85c;
+}
+.form-control, .btn {        
+	border-radius: 3px;
+}
+.signup-form {
+	width: 600px;
+	margin: 400px;
+	margin-top: 25px;
+	padding: 30px 0;
+  	font-size: 15px;
+}
+.signup-form h2 {
+	color: white;
+	margin: 0 0 15px;
+	position: relative;
+	text-align: center;
+}
+.signup-form h2:before, .signup-form h2:after {
+	content: "";
+	height: 2px;
+	width: 30%;
+	background: red;
+	position: absolute;
+	top: 50%;
+	z-index: 2;
+}	
+.signup-form h2:before {
+	left: 0;
+}
+.signup-form h2:after {
+	right: 0;
+}
+.signup-form .hint-text {
+	color: #999;
+	margin-bottom: 30px;
+	text-align: center;
+}
+.signup-form form {
+	color: white;
+	border-radius: 3px;
+	margin-bottom: 15px;
+	background: #2A2C32;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	padding: 30px;
+}
+.signup-form .form-group {
+	margin-bottom: 8px;
+}
+.signup-form input[type="checkbox"] {
+	margin-top: 3px;
+}
+.signup-form .btn {        
+	font-size: 16px;
+	font-weight: bold;		
+	min-width: 140px;
+	outline: none !important;
+}
+.signup-form .row div:first-child {
+	padding-right: 10px;
+}
+.signup-form .row div:last-child {
+	padding-left: 10px;
+}    	
+.signup-form a {
+	color: red;
+	text-decoration: underline;
+}
+.signup-form a:hover {
+	text-decoration: none;
+}
+.signup-form form a {
+	color: #5cb85c;
+	text-decoration: none;
+}	
+.signup-form form a:hover {
+	text-decoration: underline;
+}
+table.a{
+	table-layout: auto;
+	width:100%;
+}
+select.a{
+	height: 30px;
+	width:65%;
+	border-radius: 3px;
+}
+
+.quotes h1{
+	font-style: italic;
+}
+
+div.back-button{
+	float:left;
+	margin-top: 25px;
+	margin-left: 30px;
+	font-family: 'Roboto', sans-serif;
+}
+
+.image-out{
+	margin-top:15px;
+	margin-bottom:15px;
+	height:200px;
+	width:300px;
+}
+
+#output_image
+{
+	vertical-align:text-top;
+	height:100%;
+	width:100%;
+}
+
+#wrapper
+{
+	text-align:center;
+	margin:0 auto;
+	padding:0px;
+}
+
+div.list-of-casts{
+	width:100%;
+	height:150px;
+	overflow-y: scroll;
+	background: white;
+	color: black;
+}
+

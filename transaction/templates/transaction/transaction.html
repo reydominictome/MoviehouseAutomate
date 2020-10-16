@@ -1,0 +1,305 @@
+<!DOCTYPE html> 
+<html lang="en">
+	<head>
+		{% load static %}
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+		<title>Registration</title>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!--<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>-->
+		<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+		<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+		<link href="{% static 'css/CustomerStyles.css' %}" rel="stylesheet" type="text/css">
+		<link href="{% static 'css/MyStyles.css' %}" rel="stylesheet" type="text/css">
+	</head>
+
+	<body class="body-color">
+		<nav class="navbar navbar-dark bg-dark">
+			<a class="navbar-brand" href="/main">
+		    <img src="{% static 'images/icon.png' %}" width="40" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+		    Movie House Automate
+		  </a>
+		</nav>
+		<div class="registration-body-left">
+			<div class="back-button">
+				<a type="submit" href="/transaction/index" class="btn btn-success btn-lg">To Report Summary</a>
+			</div>
+			<div class="signup-form">
+				<form action="" method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+					<h2>Transaction</h2>
+			        <table class="a">
+			        	<tr>
+			        		<td>Date of Transaction:</td>
+							<td><div class="form-group"><input id="date_of_transaction" 
+								type="date" class="form-control" name="date_of_transaction" 
+								placeholder="MM/DD/YYYY" readonly></div></td>
+			        	</tr>
+			        	<tr>
+			        		<td>Room No:</td>
+							<td><div class="form-group"><input id="room_no" type="number" step="1" min="1" max="12" class="form-control" 
+								name="room_no" placeholder="" required="required"></div></td>
+						</tr>
+						<tr>
+							<td>Customer ID:</td>
+							<td><div class="form-group">
+								<input id="customer_id" type="text" min="0" name="customer_id" required>
+								</div>
+							</td>
+						</tr>
+						<tr style="height:400px;">
+							<td>Customer Info:</td>
+							<td class="max-width">
+							{% for cus in cust %}
+							{% if cus.is_deleted == 0 %}
+							<div id="dis{{ cus.id }}" class="container-fluid mt-3" hidden>
+								<div class ="row">
+									<div class="col">
+										<div class="form-group max-width">First Name: 
+										<input id="firstname" type="text" class="form-control" value="{{ cus.first_name }}" readonly></div>
+										<div class="form-group max-width">Last Name: 
+										<input id="firstname" type="text" class="form-control" value="{{ cus.last_name }}" readonly></div>
+										<div class="form-group max-width">Birth Date:
+										<input id="birth_date" type="date" class="form-control" value="{{ cus.birth_date |  date:"Y-m-d" }}" name="birth_date" placeholder="MM/DD/YYYY" readonly>
+										</div>
+										<div class="image-out">
+											<img class = "prev-imges" id = "output_image{{ cus.id }}" src="{{ cus.profile_picture.url }}"/>
+										  </div>
+									</div>
+								</div>
+							</div>
+							{% endif %}
+							{% endfor %}
+							</td>
+						</tr>
+						<tr>
+							<td>Movie:</td>
+							<td>
+								<!--<input id="movie_id" type="text" min="0" name="movie_id" required>-->
+								<input type="text" id="movie" list="movies" name="movies" onkeyup="AddValue(document.getElementById('movie'), document.getElementById('movies'));"/>
+									<datalist id="movies">
+									{% for m in mov %}
+									{% if m.is_deleted == 0 %}
+										<option value="{{ m.title }}" label="{{ m.id }}"></option>
+									{% endif %}
+									{% endfor %}
+									</datalist>
+									<input type="hidden" name="movie" id="movie-hidden">
+									<input type="hidden" name="movie-text" id="movie-hidden-text">
+								<p id="we"></p>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<div class="input-group-append center">
+									<button class="btn btn-success" type="button" 
+									onclick="addToList();">Add Movie</button>
+								</div>
+								<input type="text" class="form-control" id="movie_list" name="movie_list" 
+								 value="" hidden>
+								<input type="text" class="form-control" id="movie_list-text" name="movie_list-text" 
+								 value="" hidden>
+							</td>
+						</tr>
+						<tr style="height:500px;">
+							<td>Movie Info</td>
+							<td>
+								{% for m in mov %}
+								{% if m.is_deleted == 0 %}
+								<div id="mov{{ m.id }}" class="container-fluid mt-1" hidden>
+									<div class ="row">
+										<div class="col">
+											<div class="form-group max-width">SKU: 
+											<input id="firstname" type="text" class="form-control" value="{{ m.sku }}" readonly></div>
+											<div class="form-group max-width">Title: 
+											<input id="firstname" type="text" class="form-control" value="{{ m.title }}" readonly></div>
+											<div class="form-group max-width">Price:
+											<input id="birth_date" type="number" step="0.1" class="form-control" value="{{ m.price }}" name="birth_date" placeholder="MM/DD/YYYY" readonly>
+											</div>
+											<div class="image-out">
+												<img class = "prev-imges" id = "output_image{{ m.id }}" src="{{ m.image.url }}"/>
+											  </div>
+										</div>
+									</div>
+								</div>
+								{% endif %}
+								{% endfor %}
+							</td>
+						</tr>
+						<tr style="height:200px;">
+							<td>Movie(s) List:</td>
+							<td>
+								<div class="form-group">
+			        				<ul class="list-of-casts" id="list-movies">
+										<li class="list-group-item list-group-item-light">No Cast(s)</li>
+									</ul>
+			        			</div>
+							</td>
+						</tr>
+			        </table>
+
+					<div class="form-group">
+			            <button type="submit" class="btn btn-success btn-lg btn-block">Finish Transaction</button>
+			        </div>
+			    </form>
+			</div>
+		</div>
+	</body>
+
+	<script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> -->
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+	<script type='text/javascript'>
+
+		var movieList = [];
+		var movieListText = [];
+		var returnword;
+
+		function addToList()  
+		{
+			if(document.getElementById('movie-hidden').value.trim != ''){
+				var returnword = document.getElementById('movie-hidden').value;
+				var returntext = document.getElementById('movie-hidden-text').value;
+				var currVal = document.getElementById('movie_list').value;
+				var currValText = document.getElementById('movie_list-text').value;
+				movieList.push(returnword);
+				movieListText.push(returntext);
+				$('#movie_list').val(movieList.join(', '));
+				$('#movie_list-text').val(movieListText.join(', '));
+				$('#movie-hidden').val('');
+				$('#movie-hidden-text').val('');
+				document.getElementById('movie-hidden').value = "";
+				document.getElementById('movie-hidden-text').value = "";
+
+				$('#list-movies').empty();
+				for (var i = 0; i < movieList.length; ++i) {
+					$('#list-movies').append('<li class="list-group-item list-group-item-light" data-value="' + movieList[i] + '">' + movieListText[i] + ' <button class="btn btn-danger float-right p-0 m-0 movie-delete">X</button></li>');
+				}
+
+				$(document).on('click', '.movie-delete', function (e) {
+					var val = $(this).parent().data('value');
+					movieList = jQuery.grep(movieList, function(value) {
+					return value != val;
+					});
+					movieListText = jQuery.grep(movieListText, function(value) {
+					return value != val;
+					});
+
+					$('#movie_list').val(movieList.join(', '));
+					$(this).parent().remove();
+					if (movieList.length === 0) {
+						var message = '<li class="list-group-item list-group-item-light">No Movie(s)</li>';
+						document.getElementById('list-movies').innerHTML = message;
+					}
+
+					$('#movie_list-text').val(movieListText.join(', '));
+					$(this).parent().remove();
+					if (movieListText.length === 0) {
+						var message = '<li class="list-group-item list-group-item-light">No Movie(s)</li>';
+						document.getElementById('list-movies').innerHTML = message;
+					}
+				});
+			}
+		}
+
+		var inputBox = document.getElementById('customer_id');
+		var previous ="";
+
+		inputBox.onkeyup = function(){
+			var str = 'dis' + inputBox.value.toString();
+			if(previous != "")
+				document.getElementById(previous).setAttribute("hidden", "");
+			document.getElementById(str).removeAttribute("hidden");
+			previous = str
+		}
+		var previousMov ="";
+
+		function AddValue(el, dl){
+			if(el.value.trim() != ''){
+				var opSelected = dl.querySelector(`[value="${el.value}"]`);
+				var text = opSelected.getAttribute('label');
+
+				var str = 'mov' + text.toString();
+				if(previousMov != "")
+					document.getElementById(previousMov).setAttribute("hidden", "");
+				document.getElementById(str).removeAttribute("hidden");
+				previousMov = str;
+				document.getElementById('movie-hidden').value = text;
+				document.getElementById('movie-hidden-text').value = opSelected.value;
+			}
+		}
+		
+
+		$(document).ready(function () {
+			var currDate = new Date();
+			var day = ("0" + currDate.getDate()).slice(-2);
+			var month = ("0" + (currDate.getMonth() + 1)).slice(-2);
+			var today = currDate.getFullYear()+"-"+(month)+"-"+(day) ;
+			document.getElementById('date_of_transaction').value = today;
+			document.getElementById('sku').value = +currDate;  
+		})
+
+		// Get the button that opens the modal
+		var btn = document.querySelectorAll("button.modal-button");
+
+		// All page modals
+		var modals = document.querySelectorAll('.modal');
+
+		// Get the <span> element that closes the modal
+		var spans = document.getElementsByClassName("close");
+
+		// Get the cancel buttons that closes the modal
+		var btnCancel = document.getElementsByClassName("cancel");
+
+		// When the user clicks the button, open the modal
+		for (var i = 0; i < btn.length; i++) {
+		btn[i].onclick = function(e) {
+			e.preventDefault();
+			modal = document.querySelector(e.target.getAttribute("href"));
+			modal.style.display = "block";
+			}
+		}
+
+		// When the user clicks on cancel button, close the modal
+		for (var i = 0; i < btnCancel.length; i++) {
+		btnCancel[i].onclick = function() {
+			for (var index in modals) {
+			if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";    
+			}
+			}
+		}
+
+		// When the user clicks on <span> (x), close the modal
+		for (var i = 0; i < spans.length; i++) {
+		spans[i].onclick = function() {
+			for (var index in modals) {
+			if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";    
+				}
+			}
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target.classList.contains('modal')) {
+			for (var index in modals) {
+			if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";    
+				}
+			}
+		}
+	</script>
+
+	{% if messages %}
+	<script>
+	$(document).ready(function(){
+		$("#message").modal('show');
+	});
+	</script>
+	{% endif %}
+</html>
+
+<!--Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>-->

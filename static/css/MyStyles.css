@@ -1,0 +1,262 @@
+.registration-body-left{
+	font-family: 'Roboto', sans-serif;
+}
+.form-control {
+	height: 30px;
+	width: 100%;
+	box-shadow: none;
+	color: #969fa4;
+}
+.form-control:focus {
+	border-color: #5cb85c;
+}
+.form-control, .btn {        
+	border-radius: 3px;
+}
+.signup-form {
+	margin-top: 25px;
+	padding: 30px 0;
+  	font-size: 15px;
+}
+.signup-form h2 {
+	color: white;
+	margin: 0 0 15px;
+	position: relative;
+	text-align: center;
+}
+.signup-form h2:before, .signup-form h2:after {
+	content: "";
+	height: 2px;
+	width: 30%;
+	background: red;
+	position: absolute;
+	top: 50%;
+	z-index: 2;
+}	
+.signup-form h2:before {
+	left: 0;
+}
+.signup-form h2:after {
+	right: 0;
+}
+.signup-form .hint-text {
+	color: #999;
+	margin-bottom: 30px;
+	text-align: center;
+}
+.view-form,
+.signup-form form {
+	color: white;
+	border-radius: 3px;
+	margin-bottom: 15px;
+	background: #2A2C32;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	padding: 30px;
+}
+.signup-form .form-group {
+	margin-bottom: 8px;
+}
+.signup-form input[type="checkbox"] {
+	margin-top: 3px;
+}
+.signup-form .btn {        
+	font-size: 16px;
+	font-weight: bold;		
+	min-width: 140px;
+	outline: none !important;
+}
+.signup-form .row div:first-child {
+	padding-right: 10px;
+}
+.signup-form .row div:last-child {
+	padding-left: 10px;
+}    	
+.signup-form a {
+	color: red;
+	text-decoration: underline;
+}
+.signup-form a:hover {
+	text-decoration: none;
+}
+.signup-form form a {
+	color: #5cb85c;
+	text-decoration: none;
+}	
+.signup-form form a:hover {
+	text-decoration: underline;
+}
+table.a{
+	table-layout: auto;
+	width:100%;
+}
+select.a{
+	height: 30px;
+	width:65%;
+	border-radius: 3px;
+}
+
+.registration-body-right{
+	margin-top:200px;
+	float: right; 
+	height: 300px;
+	width: 300px;
+	background: red;
+	margin-right: 300px;
+	border-style: dashed;
+}
+
+.quotes h1{
+	font-style: italic;
+}
+
+div.back-button{
+	float:left;
+	margin-top: 25px;
+	margin-left: 30px;
+	font-family: 'Roboto', sans-serif;
+}
+
+.image-out{
+	margin-top:15px;
+	margin-bottom:15px;
+	height:300px;
+	width:300px;
+}
+
+.prev-img{
+	vertical-align: text-top;
+	height: 90%;
+	width: 100%;
+}
+
+#output_image
+{
+	vertical-align: text-top;
+	height: 100%;
+	width: 100%;
+}
+
+#wrapper
+{
+	text-align:center;
+	margin:0 auto;
+	padding:0px;
+}
+
+textarea.for-casts{
+	width:100%;
+}
+
+div.list-of-casts{
+	width:100%;
+	height:150px;
+	overflow-y: scroll;
+	background: white;
+	color: black;
+}
+.cast-delete.btn {
+	border-radius: 50%;
+    min-width: 6%;
+    padding: 3px !important;
+    font-size: 10px;
+}
+
+.add-cast.btn {
+	font-size: 10px;
+}
+
+div.for-output-img{
+	margin:15px;
+	width:300px;
+	height:260px;
+	border-style: solid;
+}
+
+#output_image
+{
+ max-width:300px;
+ max-height:250px;
+}
+
+#wrapper
+{
+ text-align:center;
+ margin:0 auto;
+ padding:0px;
+}
+
+div.list-of-casts{
+	width:100%;
+	height:150px;
+	overflow-y: scroll;
+	background: white;
+	color: black;
+}
+
+.room-container{
+	height: 500px;
+	width: 400px;
+	margin-bottom: 30px;
+	background-color: #2b312b;
+	border-radius: 15px;
+}
+
+.is-green{
+	background-color: lightgreen;
+}
+
+.is-red{
+	background-color: lightcoral;
+}
+
+.room-header{
+	width:100px;
+	margin-left:150px;
+	text-align:center;
+	color: whitesmoke;
+}
+
+.room-footer{
+	width:100%;
+	background-color:  #2b312b;
+	text-align:center;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	padding:10px;
+}
+
+.room-body{
+	height:70%;
+	font-size: 24px;
+	text-align: center;
+	font-weight: bold;
+	color:rgb(71, 67, 60);
+	padding:50px;
+}
+
+.max-width{
+	max-width: 270px;
+}
+
+.prev-imges
+{
+ width:250px;
+ height:200px;
+}
+
+.prev-as-icon{
+ width:50px;
+ height:50px;
+}
+
+.image-as-icon{
+	width:50px;
+	height:50px;
+}
+
+.prev-img
+{
+ width:250px;
+ height:300px;
+ box-shadow: inset 0px 0px 10px 20px white;
+}
